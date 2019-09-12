@@ -6,7 +6,7 @@ uses
   UStack;
 
 const
-  SizeOfMaze = 30;
+  SizeOfMaze = 39;
   Wall = '#';
   Cell = ' ';
   ExitCell = '.';
@@ -15,10 +15,13 @@ const
 type
   TMass = array [0..SizeOfMaze, 0..SizeOfMaze] of Char;
   TMaze = class
-    fMazeMatrix: TMass;
   public
-    constructor CreateMaze();
+    fMazeMatrix: TMass;
+    fSizeOfMaze: Integer;
+    constructor Create;
+    procedure CreateMaze();
     procedure ExitMaze();
+    procedure PlayMaze(aDirection: Integer);
   private
     fStartPoint: TCoordinate;
     fFinishPoint: TCoordinate;
@@ -34,19 +37,24 @@ type
 
 implementation
 
+constructor TMaze.Create;
+begin
+
+end;
+
 procedure TMaze.GenStartMatrix();
 var
   i, j: Integer;
 begin
-  for i := 0 to SizeOfMaze do
-    for j := 0 to SizeOfMaze do
-      if (i mod 2 <> 0) and (j mod 2 <> 0) and (i < SizeOfMaze) and (j < SizeOfMaze) then
+  for i := 0 to fSizeOfMaze do
+    for j := 0 to fSizeOfMaze do
+      if (i mod 2 <> 0) and (j mod 2 <> 0) and (i < fSizeOfMaze) and (j < fSizeOfMaze) then
         fMazeMatrix[i,j] := '0'
       else
         fMazeMatrix[i,j] := Wall;
 end;
 
-constructor TMaze.CreateMaze();   //Main procedure
+procedure TMaze.CreateMaze();   //Main procedure
 var
   Stack: TMyStack;
   Direction: Integer;
@@ -54,7 +62,7 @@ begin
   //Preparation
   with Self do
   begin
-    fUnvisitedCount := sqr(SizeOfMaze div 2);
+    fUnvisitedCount := sqr(fSizeOfMaze div 2);
     GenStartMatrix();
     fStartPoint.X := 1;
     fStartPoint.Y := 1;
@@ -81,10 +89,10 @@ begin
   //Mark Start and Finish
   with Self do
   begin
-    fMazeMatrix[fStartPoint.X - 1, fStartPoint.Y] := '0';
-    fFinishPoint.X := SizeOfMaze - 1;
-    fFinishPoint.Y := SizeOfMaze - 1;
-    fMazeMatrix[fFinishPoint.X, fFinishPoint.Y + 1] := '1';
+    fMazeMatrix[fStartPoint.X, fStartPoint.Y - 1] := '0';
+    fFinishPoint.X := fSizeOfMaze - 1;
+    fFinishPoint.Y := fSizeOfMaze - 1;
+    fMazeMatrix[fFinishPoint.X + 1, fFinishPoint.Y] := '1';
   end;
 end;
 
@@ -108,13 +116,13 @@ begin
     Inc(Count);
   end;
 
-  if (Self.fCurrentPoint.Y + 2 < SizeOfMaze) and (Self.fMazeMatrix[Self.fCurrentPoint.X,Self.fCurrentPoint.Y + 2] <> Cell) then
+  if (Self.fCurrentPoint.Y + 2 < fSizeOfMaze) and (Self.fMazeMatrix[Self.fCurrentPoint.X,Self.fCurrentPoint.Y + 2] <> Cell) then
   begin
     RandomMass[Count] := 1;
     Inc(Count);
   end;
 
-  if (Self.fCurrentPoint.X + 2 < SizeOfMaze) and (Self.fMazeMatrix[Self.fCurrentPoint.X + 2,Self.fCurrentPoint.Y] <> Cell) then
+  if (Self.fCurrentPoint.X + 2 < fSizeOfMaze) and (Self.fMazeMatrix[Self.fCurrentPoint.X + 2,Self.fCurrentPoint.Y] <> Cell) then
   begin
     RandomMass[Count] := 2;
     Inc(Count);
@@ -188,6 +196,8 @@ begin
         Self.fCurrentPoint := Stack.Take;
       end;
   end;
+  fMazeMatrix[fStartPoint.X, fStartPoint.Y - 1] := '.';
+  fMazeMatrix[fFinishPoint.X + 1, fFinishPoint.Y] := '0';
 end;
 
 procedure TMaze.ExitMakeVisited(aDirection: Integer);
@@ -253,6 +263,32 @@ begin
     Result := RandomMass[Random(111) mod Count]
   else
     Result := -1;
+end;
+
+procedure TMaze.PlayMaze(aDirection: Integer);
+var
+  X, Y: Integer;
+begin
+  X:= Self.fCurrentPoint.X;
+  Y:= Self.fCurrentPoint.Y;
+  case aDirection of
+    0:
+    if (Self.fMazeMatrix[X - 1, Y] = Cell) or (Self.fMazeMatrix[X - 1, Y] = ExitCell) then
+      Self.ExitMakeVisited(aDirection);
+    1:
+    if (Self.fMazeMatrix[X, Y + 1] = Cell) or (Self.fMazeMatrix[X - 1, Y] = ExitCell) then
+      Self.ExitMakeVisited(aDirection);
+    2:
+    if (Self.fMazeMatrix[X + 1, Y] = Cell) or (Self.fMazeMatrix[X - 1, Y] = ExitCell) then
+      Self.ExitMakeVisited(aDirection);
+    3:
+    if (Self.fMazeMatrix[X, Y - 1] = Cell) or (Self.fMazeMatrix[X - 1, Y] = ExitCell) then
+      Self.ExitMakeVisited(aDirection);
+  end;
+  //if Self.fCurrentPoint = Self.fFinishPoint then
+  //Что-то очень классное
+
+
 end;
 
 end.
