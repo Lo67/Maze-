@@ -18,14 +18,14 @@ type
   public
     fMazeMatrix: TMass;
     fSizeOfMaze: Integer;
+    fStartPoint: TCoordinate;
+    fFinishPoint: TCoordinate;
+    fCurrentPoint: TCoordinate;
     constructor Create;
     procedure CreateMaze();
     procedure ExitMaze();
     procedure PlayMaze(aDirection: Integer);
   private
-    fStartPoint: TCoordinate;
-    fFinishPoint: TCoordinate;
-    fCurrentPoint: TCoordinate;
     fUnvisitedCount: Integer;
     procedure GenStartMatrix();
     procedure GenMakeVisited ();
@@ -285,10 +285,6 @@ begin
     if (Self.fMazeMatrix[X, Y - 1] = Cell) or (Self.fMazeMatrix[X - 1, Y] = ExitCell) then
       Self.ExitMakeVisited(aDirection);
   end;
-  //if Self.fCurrentPoint = Self.fFinishPoint then
-  //Что-то очень классное
-
-
 end;
 
 end.

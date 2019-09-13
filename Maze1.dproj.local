@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899.12.30 00:00:00.000.348,D:\1 Stady\СиАОД\Training\UMain.dfm=D:\1 Stady\UMain.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.348,D:\1 Stady\СиАОД\Training\UMain.pas=D:\1 Stady\UMain.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.257,=D:\1 Stady\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.436,D:\1 Stady\СиАОД\Training\UStack.pas=D:\1 Stady\СиАОД\Training\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.972,D:\1 Stady\СиАОД\Training\UMaze.pas=D:\1 Stady\СиАОД\Training\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.047,D:\1 Stady\UMain.dfm=D:\1 Stady\Unit1.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.296,=D:\1 Stady\СиАОД\Training\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.592,D:\1 Stady\СиАОД\Training\Maze1.dproj=D:\1 Stady\Project1.dproj</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.047,D:\1 Stady\UMain.pas=D:\1 Stady\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.027,D:\1 Stady\СиАОД\Training\Unit1.pas=D:\1 Stady\СиАОД\Training\USize.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.541,=D:\1 Stady\СиАОД\Training\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.348,D:\1 Stady\UMain.dfm=D:\1 Stady\СиАОД\Training\UMain.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.592,D:\1 Stady\Project1.dproj=D:\1 Stady\СиАОД\Training\Maze1.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.047,D:\1 Stady\Unit1.pas=D:\1 Stady\UMain.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.218,=D:\1 Stady\СиАОД\Training\Unit1.pas</Transaction>
-    <Transaction>2019.09.12 18:09:41.541,=D:\1 Stady\СиАОД\Training\Unit1.pas</Transaction>
-    <Transaction>2019.09.12 18:15:23.027,D:\1 Stady\СиАОД\Training\USize.pas=D:\1 Stady\СиАОД\Training\Unit1.pas</Transaction>
-    <Transaction>2019.09.12 18:15:23.027,D:\1 Stady\СиАОД\Training\USize.dfm=D:\1 Stady\СиАОД\Training\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.027,D:\1 Stady\СиАОД\Training\Unit1.dfm=D:\1 Stady\СиАОД\Training\USize.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.047,D:\1 Stady\Unit1.dfm=D:\1 Stady\UMain.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.348,D:\1 Stady\UMain.pas=D:\1 Stady\СиАОД\Training\UMain.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.296,=D:\1 Stady\СиАОД\Training\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.972,D:\1 Stady\СиАОД\Training\Unit1.pas=D:\1 Stady\СиАОД\Training\UMaze.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.436,D:\1 Stady\СиАОД\Training\Unit1.pas=D:\1 Stady\СиАОД\Training\UStack.pas</Transaction>
   </Transactions>
 </BorlandProject>

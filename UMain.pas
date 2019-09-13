@@ -22,8 +22,9 @@ type
     procedure btnExitClick(Sender: TObject);
     procedure btnPlayClick(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
-    procedure btnPlayKeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
+    //procedure btnPlayKeyDown(Sender: TObject; var Key: Word;
+     // Shift: TShiftState);
+   // procedure FormShortCut(var Msg: TWMKey; var Handled: Boolean);
   private
     { Private declarations }
   public
@@ -61,17 +62,23 @@ begin
     btnFindExit.Enabled:= True;
     btnPlay.Enabled:= True;
   end;
+  fmSize.Tag := 0;
 end;
 
 procedure TfmMain.btnPlayClick(Sender: TObject);
 begin
   btnFindExit.Enabled:= False;
+  Maze.fStartPoint.X := 1;
+  Maze.fStartPoint.Y := 0;
+  Maze.fCurrentPoint.X:= Maze.fStartPoint.X;
+  Maze.fCurrentPoint.Y:= Maze.fStartPoint.Y;
 end;
 
 //Don't work
-procedure TfmMain.btnPlayKeyDown(Sender: TObject; var Key: Word;
+{procedure TfmMain.btnPlayKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
+  //UpDateImage(Maze.fMazeMatrix, Maze.fSizeOfMaze);
   case Key of
     38:
     begin
@@ -94,7 +101,7 @@ begin
       UpDateImage(Maze.fMazeMatrix, Maze.fSizeOfMaze);
     end;
   end;
-end;
+end;  }
 
 procedure TfmMain.FormCreate(Sender: TObject);
 begin
@@ -107,29 +114,67 @@ end;
 procedure TfmMain.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
+ // UpDateImage(Maze.fMazeMatrix, Maze.fSizeOfMaze);
   case Key of
-    38:
-    begin
-      Maze.PlayMaze(0);
-      UpDateImage(Maze.fMazeMatrix, Maze.fSizeOfMaze);
-    end;
-    39:
-    begin
-      Maze.PlayMaze(1);
-      UpDateImage(Maze.fMazeMatrix, Maze.fSizeOfMaze);
-    end;
-    40:
-    begin
-      Maze.PlayMaze(2);
-      UpDateImage(Maze.fMazeMatrix, Maze.fSizeOfMaze);
-    end;
-    37:
+    87:
     begin
       Maze.PlayMaze(3);
       UpDateImage(Maze.fMazeMatrix, Maze.fSizeOfMaze);
     end;
+    68:
+    begin
+      Maze.PlayMaze(2);
+      UpDateImage(Maze.fMazeMatrix, Maze.fSizeOfMaze);
+    end;
+    83:
+    begin
+      Maze.PlayMaze(1);
+      UpDateImage(Maze.fMazeMatrix, Maze.fSizeOfMaze);
+    end;
+    65:
+    begin
+      Maze.PlayMaze(0);
+      UpDateImage(Maze.fMazeMatrix, Maze.fSizeOfMaze);
+    end;
+  end;
+  if (Maze.fCurrentPoint.X = Maze.fFinishPoint.X) and (Maze.fCurrentPoint.Y = Maze.fFinishPoint.Y) then
+  begin
+    MessageBox(handle, PChar('Поздравляю! Вы выбрались из лабиринта.'),PChar(''), MB_Ok);
+    btnPlay.Enabled := False;
   end;
 end;
+
+{procedure TfmMain.FormShortCut(var Msg: TWMKey; var Handled: Boolean);
+begin
+  //UpDateImage(Maze.fMazeMatrix, Maze.fSizeOfMaze);
+  case Msg.CharCode of
+    VK_UP:
+    begin
+      Maze.PlayMaze(3);
+      UpDateImage(Maze.fMazeMatrix, Maze.fSizeOfMaze);
+    end;
+    VK_RIGHT:
+    begin
+      Maze.PlayMaze(2);
+      UpDateImage(Maze.fMazeMatrix, Maze.fSizeOfMaze);
+    end;
+    VK_DOWN:
+    begin
+      Maze.PlayMaze(1);
+      UpDateImage(Maze.fMazeMatrix, Maze.fSizeOfMaze);
+    end;
+    VK_LEFT:
+    begin
+      Maze.PlayMaze(0);
+      UpDateImage(Maze.fMazeMatrix, Maze.fSizeOfMaze);
+    end;
+  end;
+  if (Maze.fCurrentPoint.X = Maze.fFinishPoint.X) and (Maze.fCurrentPoint.Y = Maze.fFinishPoint.Y) then
+  begin
+    MessageBox(handle, PChar('Поздравляю! Вы выбрались из лабиринта.'),PChar(''), MB_Ok);
+    btnPlay.Enabled := False;
+  end;
+end; }
 
 procedure TfmMain.UpDateImage(aMaze: TMass; aSizeOfMaze: Integer);
 var
